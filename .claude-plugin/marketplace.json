@@ -1,0 +1,16 @@
+{
+  "name": "tdd-skills",
+  "owner": {
+    "name": "Sam Schick"
+  },
+  "metadata": {
+    "description": "Test-Driven Development skills for AI coding agents"
+  },
+  "plugins": [
+    {
+      "name": "tdd-skills",
+      "source": "./",
+      "description": "Complete TDD skills package"
+    }
+  ]
+}

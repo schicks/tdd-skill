@@ -1,0 +1,9 @@
+{
+  "name": "tdd-skills",
+  "description": "Test-Driven Development skills and workflows",
+  "version": "1.0.0",
+  "author": {
+    "name": "Sam Schick"
+  },
+  "license": "MIT"
+}
