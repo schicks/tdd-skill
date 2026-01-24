@@ -1,0 +1,14 @@
+{
+  "name": "playground",
+  "private": true,
+  "packageManager": "bun@1.1.0",
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "test": "nx run-many -t test"
+  },
+  "devDependencies": {
+    "nx": "latest",
+    "typescript": "latest",
+    "@types/bun": "latest"
+  }
+}
