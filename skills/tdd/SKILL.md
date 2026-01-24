@@ -35,11 +35,13 @@ TDD follows a strict **Red-Green-Refactor** cycle:
 1. Write the minimum code necessary to pass the test
 2. Don't add functionality beyond what the test requires
 3. It's okay to write "ugly" code at this stage—correctness comes first
+4. **Check for linter and type errors**—green means ALL errors are resolved, not just passing tests
 
 **Key principles:**
 - Resist the urge to write more code than needed
 - Don't optimize prematurely
 - Focus solely on making the test pass
+- A passing test with linter/type errors is NOT green—fix all errors before declaring the phase complete
 
 ### Refactor: Improve the Code
 
@@ -115,6 +117,15 @@ Assert:  Verify the expected outcome
 - Error handling and failure modes
 - Business rules and validation logic
 
+### Type Design Best Practices
+
+When designing types, aim to make invalid states impossible to construct and be as parsimonious as possible.
+
+- **All states should be meaningful**: If there is a value that fits in the type which should never occur, the type is badly designed.
+- **Avoid redundant state**: If a process is complete, don't carry intermediate data into the terminal state—it's noise that makes one state look like many.
+- **Use discriminated unions**: Each variant should contain only the data relevant to that state.
+- **Don't duplicate names**: If a name is unambiguous in context, don't rename it just because you're adding another abstraction layer.
+
 ### What Not to Test
 
 - Private implementation details
@@ -158,6 +169,29 @@ When using TDD with an AI coding agent:
 3. **Verify each step**: Confirm tests fail/pass as expected before proceeding
 4. **Ask for refactoring suggestions**: After green, ask "What could we refactor?"
 5. **Review test coverage**: Periodically ask "What edge cases are we missing?"
+
+### Pacing: Pause After Each Cycle
+
+**CRITICAL**: TDD is collaborative. After completing each Red-Green-Refactor cycle, the agent MUST pause and wait for user input before starting the next cycle.
+
+After reaching GREEN:
+
+1. Show the user what changed (the test that was added and the code that makes it pass)
+2. Ask if they want to refactor anything before moving on
+3. Suggest potential refactoring opportunities if any exist
+4. Wait for the user to indicate they're ready for the next test
+
+**Do NOT** automatically continue to the next test case. The pause between cycles is essential for:
+
+- Allowing the user to understand and internalize the changes
+- Giving the user opportunity to suggest alternative approaches
+- Discussing design decisions before they become entrenched
+- Keeping the user engaged as an active participant, not a spectator
+- Your code changes should speak for themselves. Do not summarize what you changed.
+
+Example pause message:
+
+> "The test passes. Before we continue, would you like to refactor anything? Or shall I suggest the next test case?"
 
 ## TDD Commands
 
