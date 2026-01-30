@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "tdd-skills",
-      "source": "./",
+      "source": "./skills",
       "description": "Complete TDD skills package"
     }
   ]
